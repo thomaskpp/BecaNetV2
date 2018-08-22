@@ -11,7 +11,8 @@ namespace BecaDotNet.Repository.Tests
         public void CreateTestDadosValidos()
         {
             var repository = new UserRepository();
-            var newUser = new User {
+            var newUser = new User
+            {
                 Name = "Teste User Thomas",
                 Email = "testeuserthomas@mail.com",
                 Login = "testeuserthomas",
@@ -40,7 +41,7 @@ namespace BecaDotNet.Repository.Tests
             var objFilter = new User();
             var resultado = objRepository.GetMany(objFilter);
             Assert.IsNotNull(resultado);
-            Assert.IsTrue( (resultado.Count() > 0));
+            Assert.IsTrue((resultado.Count() > 0));
         }
 
 
@@ -48,7 +49,7 @@ namespace BecaDotNet.Repository.Tests
         public void GetManyTest_DadosInvalidos()
         {
             var objRepository = new UserRepository();
-            var objFilter = new User() { SuperiorId = 999};
+            var objFilter = new User() { SuperiorId = 999 };
             var resultado = objRepository.GetMany(objFilter);
             Assert.IsNotNull(resultado);
             Assert.IsTrue((resultado.Count() == 0));
@@ -62,7 +63,7 @@ namespace BecaDotNet.Repository.Tests
             var objRepository = new UserRepository();
             var resultado = objRepository.GetSingle(1);
             Assert.IsNotNull(resultado);
-            Assert.IsTrue((resultado.Id==1));
+            Assert.IsTrue((resultado.Id == 1));
         }
 
         [TestMethod()]
@@ -84,8 +85,30 @@ namespace BecaDotNet.Repository.Tests
         [TestMethod()]
         public void UpdateTest()
         {
+            var userRepository = new UserRepository();
+            var oldName = "Admin";
+            var newName = "Updated Name Is Test";
+            var newUser = new User { Name = newName, Id = 1 };
+            var result = userRepository.Update(newUser);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Id, 1);
+            Assert.AreEqual(result.Name, newName);
 
+            newUser.Name = oldName;
+            result = userRepository.Update(newUser);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Id, 1);
+            Assert.AreEqual(result.Name, oldName);
         }
+
+        [TestMethod()]
+        public void UpdateTestInvalidName()
+        {
+            var userRepository = new UserRepository();
+            var newUser = new User { Name = string.Empty, Id = 1 };
+            var result = userRepository.Update(newUser);
+            Assert.IsNull(result);
+        }   
 
         [TestMethod()]
         public void Authenticate_DadosValidos()

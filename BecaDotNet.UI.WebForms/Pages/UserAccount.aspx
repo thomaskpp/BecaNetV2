@@ -18,5 +18,6 @@
             <asp:TextBox ID="txtPassword" runat="server" placeholder="Senha" required TextMode="Password"></asp:TextBox>
         </div>
         <asp:Button id="btnRegister" Text="Cadastrar" runat="server" OnClick="DoRegister"/>
+        <asp:Button ID="btnUpdate" Text="Atualizar" runat="server" OnClick="DoUpdate" Visible="false" />
     </form>
 </asp:Content>

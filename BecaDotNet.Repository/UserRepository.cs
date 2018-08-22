@@ -43,7 +43,6 @@ namespace BecaDotNet.Repository
             );
         }
 
-
         public IEnumerable<User> GetMany(User filter)
         {
             try
@@ -79,7 +78,6 @@ namespace BecaDotNet.Repository
             }
             return result;
         }
-
 
         public User GetEntityFromReader(IDataReader reader)
         {
@@ -136,7 +134,20 @@ namespace BecaDotNet.Repository
 
         public User Update(User updatedEntity)
         {
-            throw new System.NotImplementedException();
+            if (string.IsNullOrEmpty(updatedEntity.Name))
+                return null;
+
+            using (var factory = new ConnectionFactory())
+            {
+                var cmdText = "update tb_user set [name]=@name where [id]=@UserId";
+                var parametros = new Dictionary<string, object>
+                {
+                     {"@name"     , updatedEntity.Name}
+                    ,{"@UserId"    , updatedEntity.Id}
+                };
+                var result = factory.ExecuteNonQuery(cmdText, CommandType.Text, parametros);
+                return GetSingle(updatedEntity.Id);
+            }
         }
 
         public User Authenticate(string login, string password)

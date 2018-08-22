@@ -1,21 +1,59 @@
 ﻿using BecaDotNet.ApplicationService;
 using BecaDotNet.Domain.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace BecaDotNet.UI.WebForms.Pages
 {
     public partial class UserAccount : BasePage
     {
+        private User EditingUser
+        {
+            get {
+                if (Session["EditingUser"] == null)
+                    Session["EditingUser"] = new User();
+                return (User)Session["EditingUser"];
+            }
+            set => Session["EditingUser"] = value;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+                SetDataForEdit();
         }
 
+        private void SetDataForEdit()
+        {
+            try
+            {
+                if (Request.QueryString.HasKeys())
+                {
+                    int.TryParse(Request.QueryString["UserId"], out int userId);
+                    var user = GetUserById(userId);
+                    if (user.Id > 0)
+                    {
+                        EditingUser = user;
+                        txtName.Text = user.Name;
+                        txtEmail.Text = user.Email;
+                        txtEmail.Enabled = false;
+                        txtLogin.Text = user.Login;
+                        txtLogin.Enabled = false;
+                        txtPassword.Visible = false;
+                        btnRegister.Visible = false;
+                        btnUpdate.Visible = true;
+                    }
+                }
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private User GetUserById(int userId)
+        {
+            return ((ResultModelSingle<User>)new UserAppService().GetUser(userId)).ResultObject;
+        }
+        
         protected void DoRegister(object s, EventArgs e)
         {
             var userAppService = new UserAppService();
@@ -29,6 +67,14 @@ namespace BecaDotNet.UI.WebForms.Pages
             var resultUser = userAppService.RegisterUser(newUser);
             if (resultUser.IsSuccess)
                 Response.Redirect("~/Pages/UserList.aspx");
+        }
+
+        protected void DoUpdate(object s, EventArgs e)
+        {
+            if(!EditingUser.Name.Equals(txtName.Text))
+                Response.Write("Vai fazer o update, chamado o UserAppService, que chamada o UserRepository");
+            else
+                Response.Write("Vai fazer nada não");
         }
     }
 }

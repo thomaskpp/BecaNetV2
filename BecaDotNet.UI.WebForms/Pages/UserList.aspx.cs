@@ -54,7 +54,13 @@ namespace BecaDotNet.UI.WebForms.Pages
             {
                 var itemIndex = int.Parse(e.CommandArgument.ToString());
                 var item = ResultSet[itemIndex];
-                Response.Write($"Vai editar o usuário do ID:{item.Id} / Nome: {item.Name}");
+                Response.Redirect($"~/Pages/UserAccount.aspx?UserId={item.Id}");
+                //Para quem for utilizar a mesma página de cadastro para editar
+                Response.Redirect($"~/Pages/UserEdit.aspx?UserId={item.Id}");
+                //Para quem for utilizar a outra página para editar
+
+
+
             }
         }
     }
