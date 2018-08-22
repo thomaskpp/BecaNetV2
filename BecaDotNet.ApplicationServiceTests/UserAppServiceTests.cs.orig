@@ -105,7 +105,11 @@ namespace BecaDotNet.ApplicationService.Tests
         [TestMethod()]
         public void UpdateUserTest()
         {
+<<<<<<< Updated upstream
+=======
+			if(1==1)
             throw new System.NotImplementedException();
+>>>>>>> Stashed changes
         }
     }
 }
