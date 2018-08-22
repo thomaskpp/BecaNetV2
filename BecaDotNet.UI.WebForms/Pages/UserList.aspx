@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Site.Master" AutoEventWireup="true" CodeBehind="UserList.aspx.cs" Inherits="BecaDotNet.UI.WebForms.Pages.UserList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Site.Master" AutoEventWireup="true" CodeBehind="UserList.aspx.cs" Inherits="BecaDotNet.UI.WebForms.Pages.UserList" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -6,7 +6,7 @@
     <form id="form1" runat="server">
         <h2>User List</h2>
         <asp:GridView ID="gvUserList" runat="server" AutoGenerateColumns="false"
-            ItemType="BecaDotNet.Domain.Model.User" CssClass="table">
+            ItemType="BecaDotNet.Domain.Model.User" CssClass="table" OnRowCommand="gvUserList_RowCommand">
             <HeaderStyle CssClass="thead-dark" />
             <Columns>
                 <asp:BoundField DataField="Name" HeaderText="Nome" />
@@ -27,6 +27,7 @@
                         <%#GetSuperior(Item.SuperiorId) %>
                     </ItemTemplate>
                 </asp:TemplateField>
+                <asp:ButtonField ButtonType="Button" CommandName="EditUser" Text="Editar"/>
 
             </Columns>
         </asp:GridView>
