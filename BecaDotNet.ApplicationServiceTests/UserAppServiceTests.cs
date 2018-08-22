@@ -105,7 +105,7 @@ namespace BecaDotNet.ApplicationService.Tests
         [TestMethod()]
         public void UpdateUserTest()
         {
-
+            throw new System.NotImplementedException();
         }
     }
 }
