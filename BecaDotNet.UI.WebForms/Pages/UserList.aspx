@@ -6,7 +6,9 @@
     <form id="form1" runat="server">
         <h2>User List</h2>
         <asp:GridView ID="gvUserList" runat="server" AutoGenerateColumns="false"
-            ItemType="BecaDotNet.Domain.Model.User" CssClass="table" OnRowCommand="gvUserList_RowCommand">
+            ItemType="BecaDotNet.Domain.Model.User" CssClass="table" 
+            OnRowCommand="gvUserList_RowCommand"
+            OnRowDataBound="gvUserList_RowDataBound">
             <HeaderStyle CssClass="thead-dark" />
             <Columns>
                 <asp:BoundField DataField="Name" HeaderText="Nome" />
@@ -27,7 +29,8 @@
                         <%#GetSuperior(Item.SuperiorId) %>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:ButtonField ButtonType="Button" CommandName="EditUser" Text="Editar"/>
+                <asp:ButtonField ButtonType="Button" CommandName="EditUser" Text="Editar" ControlStyle-CssClass="btn btn-success"/>
+                <asp:ButtonField ButtonType="Button" CommandName="RemoveUser" Text="Remover" ControlStyle-CssClass="btn btn-danger"/>
 
             </Columns>
         </asp:GridView>

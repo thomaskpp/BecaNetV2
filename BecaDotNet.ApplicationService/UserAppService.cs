@@ -95,12 +95,35 @@ namespace BecaDotNet.ApplicationService
 
         public ResultModel RemoveUser(int userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var rep = new UserRepository();
+                var result = rep.Remove(userId);
+                   return result 
+                   ? new ResultModel { IsSuccess = true }
+                   : new ResultModel { Messages = new List<string> { "Erro ao remover" } };
+            }
+
+            catch (Exception ex)
+            {
+                return ExceptionHelper.GetResultModelFromException(ex);
+            }
         }
 
         public ResultModel UpdateUser(User updatedUser)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var repository = new UserRepository();
+                var result = repository.Update(updatedUser);
+                if (result.Id > 0)
+                    return new ResultModelSingle<User> { IsSuccess = true, ResultObject = result };
+                return new ResultModel { Messages = new List<string> { "Erro ao atualizar o registro" } };
+            }
+            catch(Exception ex)
+            {
+                return ExceptionHelper.GetResultModelFromException(ex);
+            }
         }
 
     }

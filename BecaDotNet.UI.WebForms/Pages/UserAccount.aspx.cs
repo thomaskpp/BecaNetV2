@@ -71,10 +71,19 @@ namespace BecaDotNet.UI.WebForms.Pages
 
         protected void DoUpdate(object s, EventArgs e)
         {
-            if(!EditingUser.Name.Equals(txtName.Text))
-                Response.Write("Vai fazer o update, chamado o UserAppService, que chamada o UserRepository");
-            else
-                Response.Write("Vai fazer nada não");
+            if (!EditingUser.Name.Equals(txtName.Text))
+            {
+                EditingUser.Name = txtName.Text;
+                var appService = new UserAppService();
+                var result = appService.UpdateUser(EditingUser);
+                if (!result.IsSuccess)
+                {
+                    Response.Write(result.Messages[0]);
+                    return;
+                }
+                Response.Redirect("~/Pages/UserList.aspx");
+            }
+            return;
         }
     }
 }

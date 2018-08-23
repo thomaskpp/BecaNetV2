@@ -129,7 +129,19 @@ namespace BecaDotNet.Repository
 
         public bool Remove(int entityId)
         {
-            throw new System.NotImplementedException();
+            if (entityId == 0)
+                return false;
+
+            using (var factory = new ConnectionFactory())
+            {
+                var cmdText = "update tb_user set [is_active]=0 where [id]=@UserId";
+                var parametros = new Dictionary<string, object>
+                {
+                    {"@UserId"    , entityId}
+                };
+                var result = factory.ExecuteNonQuery(cmdText, CommandType.Text, parametros);
+                return true;
+            }
         }
 
         public User Update(User updatedEntity)

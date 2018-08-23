@@ -2,6 +2,7 @@
 using BecaDotNet.Domain.Model;
 using System;
 using System.Collections.Generic;
+using System.Web.UI.WebControls;
 
 namespace BecaDotNet.UI.WebForms.Pages
 {
@@ -20,7 +21,12 @@ namespace BecaDotNet.UI.WebForms.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            BindData(!IsPostBack);
+        }
+
+        private void BindData(bool loadData=true)
+        {
+            if (loadData)
                 LoadData();
             LoadDataForGridView();
         }
@@ -50,17 +56,47 @@ namespace BecaDotNet.UI.WebForms.Pages
 
         protected void gvUserList_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "EditUser")
+            switch (e.CommandName)
             {
-                var itemIndex = int.Parse(e.CommandArgument.ToString());
-                var item = ResultSet[itemIndex];
-                Response.Redirect($"~/Pages/UserAccount.aspx?UserId={item.Id}");
-                //Para quem for utilizar a mesma página de cadastro para editar
-                Response.Redirect($"~/Pages/UserEdit.aspx?UserId={item.Id}");
-                //Para quem for utilizar a outra página para editar
+                case "EditUser":
+                    {
+                        var itemIndex = int.Parse(e.CommandArgument.ToString());
+                        var item = ResultSet[itemIndex];
+                        Response.Redirect($"~/Pages/UserAccount.aspx?UserId={item.Id}");
+                        break;
+                    }
+                case "RemoveUser":
+                    {
+                        var itemIndex = int.Parse(e.CommandArgument.ToString());
+                        var item = ResultSet[itemIndex];
+                        RemoveUser(item);
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+
+        private void RemoveUser(User toDelete)
+        {
+            var svc = new UserAppService();
+            var result = svc.RemoveUser(toDelete.Id);
+            if (!result.IsSuccess)
+            {
+                Response.Write($"Erro ao excluir {toDelete.Name}.{result.Messages[0]}");
+                return;
+            }
+            BindData();
 
 
+        }
 
+        protected void gvUserList_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (ResultSet[e.Row.DataItemIndex].UserTypeId == 1)
+                    ((Button)e.Row.Controls[7].Controls[0]).Enabled = false;
             }
         }
     }
