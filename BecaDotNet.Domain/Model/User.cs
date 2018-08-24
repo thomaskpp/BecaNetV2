@@ -12,5 +12,11 @@ namespace BecaDotNet.Domain.Model
         public int UserTypeId { get; set; }
         public int? SuperiorId { get; set; }
         public UserType UserType { get; set; }
+
+        public User()
+        {
+            RegisterDate = DateTime.Now;
+            UserTypeId = 2;
+        }
     }
 }

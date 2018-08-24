@@ -11,12 +11,26 @@ namespace BecaDotNet.ApplicationService
     {
         private UserRepositoryGeneric rep = new UserRepositoryGeneric();
 
+        private void CreateUserTypeUser(User user)
+        {
+            var userTypeUser = new UserTypeUserAppSvcGeneric().
+                Create(new UserTypeUser
+                {
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    StartDate = DateTime.Now,
+                    UserId = user.Id,
+                    UserTypeId = user.UserTypeId
+                });
+        }
+
         public User Create(User toCreate)
         {
             try
             {
                 rep.Create(toCreate);
                 rep.Save();
+                CreateUserTypeUser(toCreate);
                 return toCreate;
             }
             catch (Exception wz)
@@ -64,7 +78,7 @@ namespace BecaDotNet.ApplicationService
             {
                 return rep.GetSingle(id);
             }
-            catch   
+            catch
             {
                 return null;
             }

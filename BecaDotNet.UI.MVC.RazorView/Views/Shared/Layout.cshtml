@@ -9,18 +9,23 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto" id="menu">
-                    <li class="nav-item"><a class="nav-link" href="~/Home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="~/User/List">Listar Usuários</a></li>
-                    <li class="nav-item"><a class="nav-link" href="~/User/New">Criar Usuário</a></li>
-                </ul>
-            </div>
-        </nav>
+
+        <div class="jumbotron">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto" id="menu">
+                        <li class="nav-item"><a class="nav-link" href="~/Home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="~/User/List">Listar Usuários</a></li>
+                        <li class="nav-item"><a class="nav-link" href="~/User/New">Criar Usuário</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </header>
     <div id="body">
-        @RenderBody()
+        <div class="mx-auto col-10">
+            @RenderBody()
+        </div>
     </div>
 </body>
 </html>
