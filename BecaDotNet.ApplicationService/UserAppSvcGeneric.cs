@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BecaDotNet.Domain.Model;
 using BecaDotNet.Domain.Service;
 using BecaDotNet.Repository;
@@ -26,12 +27,35 @@ namespace BecaDotNet.ApplicationService
 
         public bool Delete(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                rep.Delete(id);
+                rep.Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public IEnumerable<User> FindBy(User filter)
         {
-            throw new System.NotImplementedException();
+            if (filter == null)
+                filter = new User();
+
+            try
+            {
+                var result = rep.FindBy(
+                    item => item.Name.Contains(string.IsNullOrEmpty(filter.Name) ? item.Name : filter.Name) &&
+                        item.UserTypeId == (filter.UserTypeId > 0 ? filter.UserTypeId : item.UserTypeId)
+                    ).ToList();
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public User Get(int id)
@@ -40,7 +64,7 @@ namespace BecaDotNet.ApplicationService
             {
                 return rep.GetSingle(id);
             }
-            catch
+            catch   
             {
                 return null;
             }
@@ -48,7 +72,18 @@ namespace BecaDotNet.ApplicationService
 
         public User Update(User toUpdate)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var currentEntity = rep.GetSingle(toUpdate.Id);
+                currentEntity.Name = toUpdate.Name;
+                rep.Update(currentEntity);
+                rep.Save();
+                return currentEntity;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public User Authenticate(string login, string password)

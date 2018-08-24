@@ -79,7 +79,7 @@ namespace BecaDotNet.Repository
             return result;
         }
 
-        public User GetEntityFromReader(IDataReader reader)
+        public User GetEntityFromReader(IDataReader reader) 
         {
             try
             {

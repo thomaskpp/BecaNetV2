@@ -7,15 +7,13 @@ namespace BecaDotNet.Repository.Migrations
 
     internal sealed class Configuration : DbMigrationsConfiguration<BecaContext>
     {
-        #region RemoveProceIfExists
+        #region RemoveProcIfExists
         private const string RemoveProceIfExists = @"
 if(object_id('STP_Register_User') is not null)
     drop procedure STP_Register_User
-
 if(object_id('STP_GET_USER') is not null)
-    drop procedure STP_GET_USER
-";
-        #endregion RemoveProceIfExists
+    drop procedure STP_GET_USER";
+        #endregion RemoveProcIfExists
 
         #region STP_GET_USER
         private const string STP_GET_USER = @"
@@ -82,7 +80,7 @@ end";
 
         protected override void Seed(BecaContext context)
         {
-
+            #region ContextSeed
             context.UserTypes.AddOrUpdate(new UserType { Id = 1, Description = "Admin", IsActive = true });
             context.UserTypes.AddOrUpdate(new UserType { Id = 2, Description = "Padrão", IsActive = true });
             context.Users.AddOrUpdate(new User { Id = 1,
@@ -126,6 +124,7 @@ end";
                 UserId = 2,
                 UserTypeId = 2
             });
+            #endregion ContextSeed
 
             context.Database.ExecuteSqlCommand(RemoveProceIfExists);
             context.Database.ExecuteSqlCommand(STP_GET_USER);

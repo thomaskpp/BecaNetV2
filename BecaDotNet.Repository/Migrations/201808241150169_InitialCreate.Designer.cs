@@ -13,7 +13,7 @@ namespace BecaDotNet.Repository.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201808240441485_InitialCreate"; }
+            get { return "201808241150169_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

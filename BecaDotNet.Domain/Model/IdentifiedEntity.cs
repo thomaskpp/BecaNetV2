@@ -1,6 +1,6 @@
 ﻿namespace BecaDotNet.Domain.Model
 {
-    public class IdentifiedEntity
+    public abstract class IdentifiedEntity
     {
         public int Id { get; set; }
         public bool IsActive { get; set; }
