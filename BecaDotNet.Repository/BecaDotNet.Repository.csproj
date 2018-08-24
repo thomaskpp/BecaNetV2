@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,8 +47,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configs\BaseIdentifiedEntityConfig.cs" />
+    <Compile Include="Configs\UserEntityConfig.cs" />
+    <Compile Include="Configs\UserTypeEntityConfig.cs" />
+    <Compile Include="Configs\UserTypeUserEntityConfig.cs" />
+    <Compile Include="Context\BecaContext.cs" />
+    <Compile Include="Context\BecaDbInitializer.cs" />
+    <Compile Include="GenericRepository.cs" />
+    <Compile Include="Migrations\201808240441485_InitialCreate.cs" />
+    <Compile Include="Migrations\201808240441485_InitialCreate.Designer.cs">
+      <DependentUpon>201808240441485_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserRepository.cs" />
+    <Compile Include="UserRepositoryGeneric.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BecaDotNet.Domain\BecaDotNet.Domain.csproj">
@@ -52,6 +72,15 @@
       <Project>{0BB3A9EA-DEAD-40F4-9D8E-58E513DDE38C}</Project>
       <Name>BecaDotNet.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808240441485_InitialCreate.resx">
+      <DependentUpon>201808240441485_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

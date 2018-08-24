@@ -97,7 +97,7 @@ namespace BecaDotNet.Repository
                     SuperiorId = superiorId == 0 ? null : (int?)superiorId,
                     Email = reader["EMAIL"].ToString(),
                     Login = reader["LOGIN"].ToString(),
-                    Name = reader["NAME"].ToString(),
+                    Name = reader["FULL_NAME"].ToString(),
                     UserType = new UserType
                     {
                         Description = reader["DESC_USER_TYPE"].ToString(),

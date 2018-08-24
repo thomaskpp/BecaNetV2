@@ -15,12 +15,11 @@ namespace BecaDotNet.UI.MVC.RazorView.Controllers
         [HttpPost]
         public ActionResult Index(string login, string password)
         {
-            var svc = new UserAppService();
-            var result = svc.AuthenticateUser(login, password);
-            if (result.IsSuccess)
+            var svc = new UserAppSvcGeneric();
+            var result = svc.Authenticate(login, password);
+            if (result!=null)
                 return RedirectToAction("Index", "Home");
-
-            ViewBag.LoginError = result.Messages;
+            ViewBag.LoginError = "Usuário ou senha inválidos";
             return View();
         }
     }

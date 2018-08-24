@@ -1,8 +1,7 @@
 ﻿namespace BecaDotNet.Domain.Model
 {
-    public class UserType
+    public class UserType : IdentifiedEntity
     {
-        public int Id { get; set; }
         public string Description { get; set; }
     }
 }

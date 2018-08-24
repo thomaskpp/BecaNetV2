@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\IdentifiedEntity.cs" />
     <Compile Include="Model\ResultModel.cs" />
     <Compile Include="Model\ResultModelMany.cs" />
     <Compile Include="Model\ResultModelSingle.cs" />
@@ -47,8 +48,10 @@
     <Compile Include="Model\UserType.cs" />
     <Compile Include="Model\UserTypeUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Service\IGenericService.cs" />
     <Compile Include="Service\IUserService.cs" />
   </ItemGroup>
   <ItemGroup />
