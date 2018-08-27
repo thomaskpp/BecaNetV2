@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientRepository.cs" />
     <Compile Include="Configs\BaseIdentifiedEntityConfig.cs" />
     <Compile Include="Configs\ClientEntityConfig.cs" />
     <Compile Include="Configs\ProjectEntityConfig.cs" />
