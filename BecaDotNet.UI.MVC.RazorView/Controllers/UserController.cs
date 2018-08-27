@@ -1,10 +1,12 @@
 ﻿using BecaDotNet.ApplicationService;
 using BecaDotNet.Domain.Model;
+using BecaDotNet.UI.MVC.RazorView.Models.Filter;
 using BecaDotNet.UI.MVC.RazorView.Models.ViewModel;
 using System.Web.Mvc;
 
 namespace BecaDotNet.UI.MVC.RazorView.Controllers
 {
+    [CustomAuthorize]
     public class UserController : Controller
     {
         [HttpGet]

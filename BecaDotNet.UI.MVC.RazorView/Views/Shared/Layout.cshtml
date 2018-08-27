@@ -11,15 +11,24 @@
     <header>
 
         <div class="jumbotron">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto" id="menu">
-                        <li class="nav-item"><a class="nav-link" href="~/Home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="~/User/List">Listar Usuários</a></li>
-                        <li class="nav-item"><a class="nav-link" href="~/User/New">Criar Usuário</a></li>
-                    </ul>
-                </div>
-            </nav>
+
+            <div class="col-8">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto" id="menu">
+                            <li class="nav-item"><a class="nav-link" href="~/Home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="~/User/List">Listar Usuários</a></li>
+                            <li class="nav-item"><a class="nav-link" href="~/User/New">Criar Usuário</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-3">
+                        <p>Olá, <b> Dar um jeito de escrever o nome do usário aqui</b></p>
+                    </div>
+                    <div class="col-1">
+                        @Html.ActionLink("Sair", "DoLogout", "Login")
+                    </div>
+                </nav>
+            </div>
         </div>
     </header>
     <div id="body">
