@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configs\BaseIdentifiedEntityConfig.cs" />
+    <Compile Include="Configs\ClientEntityConfig.cs" />
+    <Compile Include="Configs\ProjectEntityConfig.cs" />
+    <Compile Include="Configs\ProjectUserEntityConfig.cs" />
     <Compile Include="Configs\UserEntityConfig.cs" />
     <Compile Include="Configs\UserTypeEntityConfig.cs" />
     <Compile Include="Configs\UserTypeUserEntityConfig.cs" />
@@ -57,6 +60,10 @@
     <Compile Include="Migrations\201808241150169_InitialCreate.cs" />
     <Compile Include="Migrations\201808241150169_InitialCreate.Designer.cs">
       <DependentUpon>201808241150169_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808271803191_AddClientProject.cs" />
+    <Compile Include="Migrations\201808271803191_AddClientProject.Designer.cs">
+      <DependentUpon>201808271803191_AddClientProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,6 +88,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201808241150169_InitialCreate.resx">
       <DependentUpon>201808241150169_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808271803191_AddClientProject.resx">
+      <DependentUpon>201808271803191_AddClientProject.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

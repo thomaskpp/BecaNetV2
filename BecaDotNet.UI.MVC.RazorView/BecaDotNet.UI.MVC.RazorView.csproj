@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="Models\Filter\CustomAuthorizeAttribute.cs" />
     <Compile Include="Models\UrlToActionHelper.cs" />
+    <Compile Include="Models\ViewModel\UserListViewModel.cs" />
     <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -178,6 +179,7 @@
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\UserControl.cshtml" />
+    <Content Include="Views\User\UserListGrid.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

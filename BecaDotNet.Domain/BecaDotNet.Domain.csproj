@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Client.cs" />
     <Compile Include="Model\IdentifiedEntity.cs" />
+    <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\ProjectUser.cs" />
     <Compile Include="Model\ResultModel.cs" />
     <Compile Include="Model\ResultModelMany.cs" />
     <Compile Include="Model\ResultModelSingle.cs" />
