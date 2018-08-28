@@ -23,12 +23,28 @@
             <td>@item.DescTipoUsuario</td>
             <td>@item.NomeSuperior</td>
             <td>
-                <a href="#" id="deleteUser" rel="@item.Id">Excluir</a>
-                <a href="#" id="editUser" rel="@item.Id">Editar</a>
+                <a href="#" class="btn btn-danger deleteUser" rel="@item.Id">Excluir</a>
+                <a href="#" class="btn btn-success editUser" rel="@item.Id">Editar</a>
             </td>
         </tr>
         }
     </tbody>
 </table>
+
+<script>
+    $(function () {
+        $('.deleteUser').on('click', function (e) {
+            e.preventDefault();
+            var id = this.getAttribute('rel');
+            alert(id);
+        });
+        $('.editUser').on('click', function (e) {
+
+            e.preventDefault();
+            var id = this.getAttribute('rel');
+            window.location = '/User/Edit/' + id;
+        });
+    });
+</script>
 
 

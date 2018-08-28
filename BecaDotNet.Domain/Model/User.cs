@@ -11,7 +11,10 @@ namespace BecaDotNet.Domain.Model
         public DateTime RegisterDate { get; set; }
         public int UserTypeId { get; set; }
         public int? SuperiorId { get; set; }
+        public User Superior { get; set; }
         public UserType UserType { get; set; }
+        public int? CurrentProjectId { get; set; }
+        public Project CurrentProject { get; set; }
 
         public User()
         {

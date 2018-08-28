@@ -62,7 +62,8 @@ namespace BecaDotNet.ApplicationService
             {
                 var result = rep.FindBy(
                     item => item.Name.Contains(string.IsNullOrEmpty(filter.Name) ? item.Name : filter.Name) &&
-                        item.UserTypeId == (filter.UserTypeId > 0 ? filter.UserTypeId : item.UserTypeId)
+                        item.UserTypeId == (filter.UserTypeId > 0 ? filter.UserTypeId : item.UserTypeId),
+                    a => a.UserType, a => a.Superior
                     ).ToList();
                 return result;
             }

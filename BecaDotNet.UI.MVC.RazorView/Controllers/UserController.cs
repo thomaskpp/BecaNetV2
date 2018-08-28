@@ -1,7 +1,10 @@
 ﻿using BecaDotNet.ApplicationService;
 using BecaDotNet.Domain.Model;
+using BecaDotNet.UI.MVC.RazorView.Models;
 using BecaDotNet.UI.MVC.RazorView.Models.Filter;
 using BecaDotNet.UI.MVC.RazorView.Models.ViewModel;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace BecaDotNet.UI.MVC.RazorView.Controllers
@@ -20,6 +23,31 @@ namespace BecaDotNet.UI.MVC.RazorView.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public PartialViewResult ListUser()
+        {
+            var model = GetViewModelForList(new UserAppSvcGeneric().FindBy(new User { UserTypeId = 0}));
+            return PartialView("UserListGrid", model);
+        }
+
+        private IEnumerable<UserListViewModel> GetViewModelForList(IEnumerable<User> list)
+        {
+            var result = new List<UserListViewModel>();
+            foreach (var i in list)
+                result.Add(new UserListViewModel
+                {
+                    DataCadastro = i.RegisterDate,
+                    EmailUsuario = i.Email,
+                    Id = i.Id,
+                    DescTipoUsuario = i.UserType != null ? i.UserType.Description : "N/A",
+                    LoginUsuario = i.Login,
+                    NomeSuperior = i.Superior != null ? i.Superior.Name : "N/A",
+                    NomeUsuario = i.Name,
+                    UsuarioAtivo = i.IsActive
+                });
+            return result;
+        }
+
 
         [HttpGet]
         public ActionResult New()
@@ -50,9 +78,8 @@ namespace BecaDotNet.UI.MVC.RazorView.Controllers
             if (createResult)
                 return RedirectToAction("List");
             ViewBag.ErrorMessage = "Erro ao Criar o usuário";
-            return View("UserControl",model);
+            return View("UserControl", model);
         }
-
 
         private ActionResult EditUserAction(UserAccountViewModel model)
         {
@@ -60,7 +87,7 @@ namespace BecaDotNet.UI.MVC.RazorView.Controllers
             if (updateResult)
                 return RedirectToAction("List");
             ViewBag.ErrorMessage = "Erro ao Editar o usuário";
-            return View("UserControl",model);
+            return View("UserControl", model);
         }
 
         private bool DoCreateUser(UserAccountViewModel model)

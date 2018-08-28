@@ -28,6 +28,7 @@ namespace BecaDotNet.Repository.Context
             builder.Configurations.Add(new UserTypeUserEntityConfig());
             builder.Configurations.Add(new ClientEntityConfig());
             builder.Configurations.Add(new ProjectEntityConfig());
+            builder.Configurations.Add(new ProjectUserEntityConfig());
         }
 
         public DbSet<User> Users { get; set; }
@@ -35,6 +36,6 @@ namespace BecaDotNet.Repository.Context
         public DbSet<UserTypeUser> UserTypeUsers { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Project> Projects { get; set; }
-        //public DbSet<ProjectUser> ProjectUsers { get; set; }
+        public DbSet<ProjectUser> ProjectUsers { get; set; }
     }
 }

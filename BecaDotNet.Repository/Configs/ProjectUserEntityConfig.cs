@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BecaDotNet.Domain.Model;
 
 namespace BecaDotNet.Repository.Configs
 {
-    class ProjectUserEntityConfig__
+    public class ProjectUserEntityConfig : BaseIdentifiedEntityConfig<ProjectUser>
     {
+        public ProjectUserEntityConfig()
+        {
+            ToTable("TB_PROJECT_USER");
+            Property(p => p.UserProjectStartDate).HasColumnName("START_DATE").HasColumnType("datetime").IsRequired();
+            Property(p => p.UserProjectEndDate).HasColumnName("END_DATE").HasColumnType("datetime").IsOptional();
+            Property(p => p.UserId).HasColumnName("USER_ID").HasColumnType("int").IsRequired();
+            Property(p => p.ProjectId).HasColumnName("PROJECT_ID").HasColumnType("int").IsRequired();
+        }
     }
 }

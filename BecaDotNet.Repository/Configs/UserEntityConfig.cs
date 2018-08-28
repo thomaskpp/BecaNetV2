@@ -14,6 +14,7 @@ namespace BecaDotNet.Repository.Configs
             this.Property(p => p.UserTypeId).HasColumnName("USER_TYPE_ID").HasColumnType("int").IsRequired();
             this.Property(p => p.SuperiorId).HasColumnName("SUPERIOR_ID").HasColumnType("int").IsOptional();
             this.Property(p => p.RegisterDate).HasColumnName("REGISTER_DATE").HasColumnType("DateTime").IsRequired();
+            this.Property(p => p.CurrentProjectId).HasColumnName("CURRENT_PROJECT_ID").HasColumnType("int").IsOptional();
         }
     }
 }

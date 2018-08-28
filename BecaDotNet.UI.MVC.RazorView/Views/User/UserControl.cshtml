@@ -24,7 +24,7 @@
         @Html.TextBoxFor(m => m.LoginUsuario, new { placeholder = "Login" })
         @Html.ValidationMessageFor(m => m.LoginUsuario)
     </div>
-    if(!Model.IsEdit)
+    if (!Model.IsEdit)
     {
         <div class="form-group">
             @Html.LabelFor(m => m.SenhaUsuario)
@@ -32,8 +32,20 @@
             @Html.ValidationMessageFor(m => m.SenhaUsuario)
         </div>
     }
-    @Html.HiddenFor(m=>m.IsEdit)
-    @Html.HiddenFor(m=>m.Id)
+
+    <div class="form-group">
+        <p>Drop Down List</p>
+        @Html.DropDownList("ddlUser", Model.DdlUser)
+    </div>
+
+
+    <div class="form-group">
+        <p>Drop Down List For</p>
+        @Html.DropDownListFor(m=> m.IdSuperior, Model.DdlUser)
+    </div>
+
+    @Html.HiddenFor(m => m.IsEdit)
+    @Html.HiddenFor(m => m.Id)
     <div class="form-group">
         <button id="btnSaveUser" class="btn btn-success">Salvar</button>
     </div>

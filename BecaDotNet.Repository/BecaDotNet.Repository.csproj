@@ -66,6 +66,26 @@
     <Compile Include="Migrations\201808271803191_AddClientProject.Designer.cs">
       <DependentUpon>201808271803191_AddClientProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808271923414_AddProjectUser.cs" />
+    <Compile Include="Migrations\201808271923414_AddProjectUser.Designer.cs">
+      <DependentUpon>201808271923414_AddProjectUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808271925294_AdjustUserTypeRelation.cs" />
+    <Compile Include="Migrations\201808271925294_AdjustUserTypeRelation.Designer.cs">
+      <DependentUpon>201808271925294_AdjustUserTypeRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808271927153_RenameProjectUserRelationship.cs" />
+    <Compile Include="Migrations\201808271927153_RenameProjectUserRelationship.Designer.cs">
+      <DependentUpon>201808271927153_RenameProjectUserRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808271932538_AddUserProjectCurrentRelationship.cs" />
+    <Compile Include="Migrations\201808271932538_AddUserProjectCurrentRelationship.Designer.cs">
+      <DependentUpon>201808271932538_AddUserProjectCurrentRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808271934381_AddUserSuperiorUser.cs" />
+    <Compile Include="Migrations\201808271934381_AddUserSuperiorUser.Designer.cs">
+      <DependentUpon>201808271934381_AddUserSuperiorUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserRepository.cs" />
@@ -92,6 +112,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808271803191_AddClientProject.resx">
       <DependentUpon>201808271803191_AddClientProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808271923414_AddProjectUser.resx">
+      <DependentUpon>201808271923414_AddProjectUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808271925294_AdjustUserTypeRelation.resx">
+      <DependentUpon>201808271925294_AdjustUserTypeRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808271927153_RenameProjectUserRelationship.resx">
+      <DependentUpon>201808271927153_RenameProjectUserRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808271932538_AddUserProjectCurrentRelationship.resx">
+      <DependentUpon>201808271932538_AddUserProjectCurrentRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808271934381_AddUserSuperiorUser.resx">
+      <DependentUpon>201808271934381_AddUserSuperiorUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

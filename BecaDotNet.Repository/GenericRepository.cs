@@ -23,7 +23,14 @@ namespace BecaDotNet.Repository
             this.Update(toDelete);
         }
 
-        public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate) => _ctx.Set<T>().Where(predicate);
+        public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> currentSet = _ctx.Set<T>();
+            foreach (var inc in includes)
+                currentSet.Include(inc);
+
+            return currentSet.Where(predicate);
+        }
 
         public T GetSingle(int id) => _ctx.Set<T>().SingleOrDefault(f => f.Id == id);
 

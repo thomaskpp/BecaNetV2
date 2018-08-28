@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientAppService.cs" />
+    <Compile Include="ProjectAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserAppService.cs" />
     <Compile Include="UserAppSvcGeneric.cs" />
+    <Compile Include="UserTypeAppService.cs" />
     <Compile Include="UserTypeUserAppSvcGeneric.cs" />
   </ItemGroup>
   <ItemGroup>

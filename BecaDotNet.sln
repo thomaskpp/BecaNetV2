@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BecaDotNet.CrossCutting", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BecaDotNet.UI.MVC.RazorView", "BecaDotNet.UI.MVC.RazorView\BecaDotNet.UI.MVC.RazorView.csproj", "{0643B37D-3166-48B9-9CF8-863B8035FD53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BecaDotNet.UI.MVC.WebApi", "BecaDotNet.UI.MVC.WebApi\BecaDotNet.UI.MVC.WebApi.csproj", "{D7E1C58F-66C0-4EDF-AFFE-5AA791431130}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BecaDotNet.UI.WCF", "BecaDotNet.UI.WCF\BecaDotNet.UI.WCF.csproj", "{45E10FD9-79F0-4E14-8E5B-51B3EE2C5469}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +69,14 @@ Global
 		{0643B37D-3166-48B9-9CF8-863B8035FD53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0643B37D-3166-48B9-9CF8-863B8035FD53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0643B37D-3166-48B9-9CF8-863B8035FD53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7E1C58F-66C0-4EDF-AFFE-5AA791431130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7E1C58F-66C0-4EDF-AFFE-5AA791431130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7E1C58F-66C0-4EDF-AFFE-5AA791431130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7E1C58F-66C0-4EDF-AFFE-5AA791431130}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45E10FD9-79F0-4E14-8E5B-51B3EE2C5469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E10FD9-79F0-4E14-8E5B-51B3EE2C5469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E10FD9-79F0-4E14-8E5B-51B3EE2C5469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E10FD9-79F0-4E14-8E5B-51B3EE2C5469}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
