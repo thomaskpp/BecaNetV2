@@ -6,9 +6,9 @@ namespace BecaDotNet.UI.MVC.RazorView.Models
 {
     public static class HelperForDropdown<T> where T : IdentifiedEntity
     {
-        public static IEnumerable<SelectListItem> GetDropDownListFrom(IEnumerable<T> list, string propName)
+        public static IEnumerable<SelectListItem> GetDropDownListFrom(IEnumerable<T> list, string propName, string defaultText = "Selecione")
         {
-            var result = new List<SelectListItem> { new SelectListItem { Text="Selecione", Value="-1"} };
+            var result = new List<SelectListItem> { new SelectListItem { Text=defaultText, Value="-1"} };
             foreach (var i in list)
                 result.Add(new SelectListItem
                 {
