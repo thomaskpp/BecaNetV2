@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -12,7 +13,7 @@ namespace BecaDotNet.Repository
         where C : DbContext, new()
     {
         private C _ctx = new C();
-        public C Context { get => _ctx; set=>_ctx=value; }
+        public C Context { get => _ctx; set => _ctx = value; }
 
         public void Create(T toCreate) => _ctx.Set<T>().Add(toCreate);
 
@@ -23,14 +24,21 @@ namespace BecaDotNet.Repository
             this.Update(toDelete);
         }
 
-        public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
-        {
-            IQueryable<T> currentSet = _ctx.Set<T>();
-            foreach (var inc in includes)
-                currentSet.Include(inc);
 
-            return currentSet.Where(predicate);
+
+        public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate, 
+            params Expression<Func<T, object>>[] includes)
+        {
+            IDbSet<T> currentSet = _ctx.Set<T>();
+            IQueryable<T> query = currentSet;
+            foreach (var inc in includes)
+                query = query.Include(inc);
+            return query.Where(predicate);
         }
+
+
+
+
 
         public T GetSingle(int id) => _ctx.Set<T>().SingleOrDefault(f => f.Id == id);
 

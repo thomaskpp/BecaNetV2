@@ -21,7 +21,8 @@ namespace BecaDotNet.UI.MVC.RazorView.Controllers
         [HttpGet]
         public ActionResult List()
         {
-            return View();
+            var model = GetViewModelForList(new UserAppSvcGeneric().FindBy(null));
+            return View(model);
         }
         [HttpGet]
         public PartialViewResult ListUser()

@@ -9,7 +9,10 @@ namespace BecaDotNet.Domain.Repository
     {
         T GetSingle(int id);
         void Create(T toCreate);
-        IQueryable<T> FindBy(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes);
+
+        IQueryable<T> FindBy(Expression<Func<T, bool>> predicate,
+            params Expression<Func<T, object>>[] includes);
+
         void Update(T toUpdate);
         void Delete(int id);
         void Save();

@@ -56,18 +56,24 @@ namespace BecaDotNet.ApplicationService
         public IEnumerable<User> FindBy(User filter)
         {
             if (filter == null)
-                filter = new User();
+                filter = new User { UserTypeId = 0 };
 
             try
             {
                 var result = rep.FindBy(
-                    item => item.Name.Contains(string.IsNullOrEmpty(filter.Name) ? item.Name : filter.Name) &&
-                        item.UserTypeId == (filter.UserTypeId > 0 ? filter.UserTypeId : item.UserTypeId),
-                    a => a.UserType, a => a.Superior
+                    item =>
+                    item.Name.Contains(
+
+                        string.IsNullOrEmpty(filter.Name) ?
+                            item.Name : filter.Name) &&
+                    item.UserTypeId == (
+                    filter.UserTypeId > 0 ?
+                    filter.UserTypeId : item.UserTypeId)
+                    , a => a.UserType, a => a.Superior
                     ).ToList();
                 return result;
             }
-            catch
+            catch (Exception exs)
             {
                 return null;
             }
