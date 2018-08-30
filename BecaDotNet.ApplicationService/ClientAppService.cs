@@ -42,6 +42,9 @@ namespace BecaDotNet.ApplicationService
         {
             try
             {
+                if (filter == null)
+                    filter = new Client();
+
                 var result = rep.FindBy(f =>
                f.Cnpj.ToString().Contains(filter.Cnpj == 0 ? f.Cnpj.ToString() : filter.Cnpj.ToString()) &&
                f.ClientName.Contains(string.IsNullOrEmpty(filter.ClientName) ? f.ClientName : filter.ClientName));

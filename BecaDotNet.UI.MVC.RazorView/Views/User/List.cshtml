@@ -4,12 +4,7 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>List</h2>
-@*@Html.Action("ListUser", "User",null)*@
-
-
-
-
+<h2>Usuários</h2>
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -28,7 +23,7 @@
             <tr>
                 <td>@item.NomeUsuario</td>
                 <td>@item.LoginUsuario</td>
-                <td>@item.DataCadastro.ToString("dd/MM/yyyy hh:mi:ss")</td>
+                <td>@item.DataCadastro.ToString("dd/MM/yyyy hh:mm:ss")</td>
                 <td>@(item.UsuarioAtivo ? "Sim" : "Não")</td>
                 <td>@item.DescTipoUsuario</td>
                 <td>@item.NomeSuperior</td>

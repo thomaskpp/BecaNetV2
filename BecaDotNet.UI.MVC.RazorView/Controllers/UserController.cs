@@ -49,7 +49,6 @@ namespace BecaDotNet.UI.MVC.RazorView.Controllers
             return result;
         }
 
-
         [HttpGet]
         public ActionResult New()
         {

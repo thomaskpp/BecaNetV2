@@ -86,6 +86,10 @@
     <Compile Include="Migrations\201808271934381_AddUserSuperiorUser.Designer.cs">
       <DependentUpon>201808271934381_AddUserSuperiorUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808291754158_SetNullableOnProjectEndDate.cs" />
+    <Compile Include="Migrations\201808291754158_SetNullableOnProjectEndDate.Designer.cs">
+      <DependentUpon>201808291754158_SetNullableOnProjectEndDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserRepository.cs" />
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808271934381_AddUserSuperiorUser.resx">
       <DependentUpon>201808271934381_AddUserSuperiorUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808291754158_SetNullableOnProjectEndDate.resx">
+      <DependentUpon>201808291754158_SetNullableOnProjectEndDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
