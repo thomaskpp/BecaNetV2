@@ -24,8 +24,7 @@ namespace BecaDotNet.UI.MVC.RazorView.Controllers
                 HttpContext.Session["CurrentUser"] = result;
                 if (string.IsNullOrEmpty(returnUrl))
                     return RedirectToAction("Index", "Home");
-                var newRoute = UrlToActionHelper.GetRouteFromUrl(returnUrl);
-                return RedirectToAction(newRoute["Action"], newRoute["Controller"]);
+                return Redirect(returnUrl);
             }
             ViewBag.LoginError = "Usuário ou senha inválidos";
             return View();

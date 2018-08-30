@@ -29,7 +29,7 @@ namespace BecaDotNet.UI.MVC.RazorView.Models.ViewModel
 
         public bool IsEdit { get; set; }
         public int Id { get; set; }
-        public int? IdSuperior{ get; set; }
+        public int? IdSuperior { get; set; }
 
         public IEnumerable<SelectListItem> DdlUser { get; set; }
 
@@ -50,7 +50,8 @@ namespace BecaDotNet.UI.MVC.RazorView.Models.ViewModel
                 Name = NomeUsuario,
                 Login = LoginUsuario,
                 Password = SenhaUsuario,
-                Id = Id
+                Id = Id,
+                SuperiorId = IdSuperior.HasValue && IdSuperior.Value == -1 ? null : IdSuperior
             };
         }
     }

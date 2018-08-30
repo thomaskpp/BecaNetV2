@@ -27,7 +27,7 @@ namespace BecaDotNet.UI.MVC.RazorView.Controllers
         [HttpGet]
         public PartialViewResult ListUser()
         {
-            var model = GetViewModelForList(new UserAppSvcGeneric().FindBy(new User { UserTypeId = 0}));
+            var model = GetViewModelForList(new UserAppSvcGeneric().FindBy(new User { UserTypeId = 0 }));
             return PartialView("UserListGrid", model);
         }
 
@@ -62,6 +62,18 @@ namespace BecaDotNet.UI.MVC.RazorView.Controllers
             if (id.HasValue && id.Value > 0)
                 return View("UserControl", GetViewModelForEdit(id.Value));
             return RedirectToAction("New");
+        }
+
+        [HttpPost]
+        public JsonResult Delete(int id)
+        {
+            var svc = new UserAppSvcGeneric();
+            var toDelete = svc.Get(id);
+            if (toDelete == null)
+                return Json(new { IsSuccess = false, Message = "Usuário Inválido" });
+            if (svc.Delete(id))
+                return Json(new { IsSuccess = true});
+            return Json(new { IsSuccess = false, Message = "Erro ao Excluir Usuário" });
         }
 
         [HttpPost]

@@ -12,7 +12,8 @@ namespace BecaDotNet.Repository
         {
             var result = Context.Set<User>().FirstOrDefault(
                 f => f.Login.Equals(login) &&
-                f.Password.Equals(password));
+                f.Password.Equals(password)&&
+                f.IsActive);
             return result;
         }
     }

@@ -7,6 +7,7 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <h2>@(!Model.IsEdit ? "Novo Usuário" : ($"Editar Usuario :{Model.NomeUsuario}"))</h2>
+<p>@Html.ActionLink("Cancelar", "List")</p>
 @using (Html.BeginForm("SaveUser", "User", FormMethod.Post, new { @id = "formUser" }))
 {
     <div class="form-group">
@@ -32,16 +33,9 @@
             @Html.ValidationMessageFor(m => m.SenhaUsuario)
         </div>
     }
-
     <div class="form-group">
-        <p>Drop Down List</p>
-        @Html.DropDownList("ddlUser", Model.DdlUser)
-    </div>
-
-
-    <div class="form-group">
-        <p>Drop Down List For</p>
-        @Html.DropDownListFor(m=> m.IdSuperior, Model.DdlUser)
+        <Label>Superior</Label>
+        @Html.DropDownListFor(m => m.IdSuperior, Model.DdlUser)
     </div>
 
     @Html.HiddenFor(m => m.IsEdit)

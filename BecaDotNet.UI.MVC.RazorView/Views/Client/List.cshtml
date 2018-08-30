@@ -4,11 +4,12 @@
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+<h2>Clientes</h2>
 <p>
-    @Html.ActionLink("Criar Cliente", "New")
+    @Html.ActionLink("Novo", "New")
 </p>
 <table class="table">
-    <thead>
+    <thead class="thead-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.NomeCliente)

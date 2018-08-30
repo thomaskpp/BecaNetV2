@@ -5,6 +5,9 @@
 }
 
 <h2>Usuários</h2>
+<p>
+    @Html.ActionLink("Novo", "New")
+</p>
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -38,10 +41,34 @@
 
 <script>
     $(function () {
+
+        function deleteUser(userId) {
+            $.ajax({
+                type: 'POST',
+                url: './Delete',
+                data: '{"id":' + userId + '}',
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (r) {
+                    if (r.IsSuccess) {
+                        window.location.reload();
+                    } else {
+                        alert(r.Message);
+                    }
+                },
+                error: function (err) {
+                    alert('Erro ao tentar remover');
+                }
+            });
+        }
+
         $('.deleteUser').on('click', function (e) {
             e.preventDefault();
             var id = this.getAttribute('rel');
-            alert(id);
+            var r = confirm("Confirmar exclusão de usuário?");
+            if (r === true) {
+                deleteUser(id);
+            }
         });
         $('.editUser').on('click', function (e) {
 

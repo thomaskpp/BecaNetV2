@@ -56,12 +56,13 @@ namespace BecaDotNet.ApplicationService
         public IEnumerable<User> FindBy(User filter)
         {
             if (filter == null)
-                filter = new User { UserTypeId = 0 };
+                filter = new User { UserTypeId = 0, IsActive = true };
 
             try
             {
                 var result = rep.FindBy(
                     item =>
+                    item.IsActive == filter.IsActive &&
                     item.Name.Contains(
 
                         string.IsNullOrEmpty(filter.Name) ?
@@ -97,6 +98,9 @@ namespace BecaDotNet.ApplicationService
             {
                 var currentEntity = rep.GetSingle(toUpdate.Id);
                 currentEntity.Name = toUpdate.Name;
+                if (toUpdate.SuperiorId != currentEntity.SuperiorId)
+                    currentEntity.SuperiorId = toUpdate.SuperiorId;
+
                 rep.Update(currentEntity);
                 rep.Save();
                 return currentEntity;
