@@ -1,6 +1,9 @@
-﻿using BecaDotNet.Domain.Model;
+﻿using BecaDotNet.ApplicationService;
+using BecaDotNet.Domain.Model;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace BecaDotNet.UI.MVC.RazorView.Models.ViewModel
 {
@@ -8,14 +11,14 @@ namespace BecaDotNet.UI.MVC.RazorView.Models.ViewModel
     {
         public int Id { get; set; }
         public bool IsEdit { get; set; }
-        [Display(Name ="Nome do Projeto")]
+        [Display(Name = "Nome do Projeto")]
         [Required]
         public string ProjectName { get; set; }
 
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
 
-        [Display(Name ="Data Início")]
+        [Display(Name = "Data Início")]
         [Required]
         public string DataInicio
         {
@@ -30,12 +33,37 @@ namespace BecaDotNet.UI.MVC.RazorView.Models.ViewModel
         }
 
         [Display(Name = "Data Fim")]
-        public string DataFim {
+        public string DataFim
+        {
             get => EndDate.HasValue ? EndDate.Value.ToString("yyyy-MM-dd") : string.Empty;
-            set {
+            set
+            {
                 DateTime.TryParse(value, out DateTime newDate);
-                EndDate = newDate.Date == DateTime.MinValue.Date ? null :(DateTime?)newDate;
+                EndDate = newDate.Date == DateTime.MinValue.Date ? null : (DateTime?)newDate;
             }
+        }
+
+        [Display(Name ="Cliente")]
+        [Required(ErrorMessage ="Selecionar o cliente")]
+        public int ClientId { get; set; }
+
+        public IEnumerable<SelectListItem> DdlClientList { get; set; }
+
+        public ProjectViewModel()
+        {
+            var clientList = new ClientAppService().FindBy(null);
+            DdlClientList = HelperForDropdown<Client>.GetDropDownListFrom(clientList, "ClientName");
+        }
+
+        public Project GetEntity()
+        {
+            return new Project
+            {
+                ClientId = ClientId,
+                ProjectName = ProjectName,
+                StartDate = StartDate,
+                EndDate = EndDate
+            };
         }
     }
 }

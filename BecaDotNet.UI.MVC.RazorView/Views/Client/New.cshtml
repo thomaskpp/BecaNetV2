@@ -4,10 +4,11 @@
     ViewBag.Title = "Novo Cliente";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-@using (Html.BeginForm("Create", "Client", FormMethod.Post)) 
+@using (Html.BeginForm("Create", "Client", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
+    <p>@Html.ActionLink("Cancelar", "List")</p>
     <div class="form-horizontal">
         <h4>Adicionar Cliente</h4>
         <hr />

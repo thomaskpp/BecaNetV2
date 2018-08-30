@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BecaDotNet.UI.MVC.RazorView.Models.ViewModel.ProjectViewModel>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Projetos</h2>
+
+<p>
+    @Html.ActionLink("Novo", "Create")
+</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFim)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectName)
+            </td>
+            <td>
+                @item.StartDate.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @(item.EndDate.HasValue ? item.EndDate.Value.ToString("dd/MM/yyyy") : "---")
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger deleteProject" rel="@item.Id">Excluir</a>
+                <a href="#" class="btn btn-success editProject" rel="@item.Id">Editar</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+<script>
+    $(function () {
+
+
+        $('.deleteProject').on('click', function (e) {
+            e.preventDefault();
+            var id = this.getAttribute('rel');
+            var r = confirm("Confirmar exclusão de Projeto?");
+            if (r === true) {
+                alert('VOCÊ PRECISA IMPLEMENTAR ISSO')
+            }
+        });
+        $('.editProject').on('click', function (e) {
+
+            e.preventDefault();
+            var id = this.getAttribute('rel');
+            window.location = '/Project/Edit/' + id;
+        });
+    });
+</script>

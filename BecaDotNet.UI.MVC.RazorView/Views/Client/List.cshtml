@@ -37,11 +37,32 @@
                     @Html.DisplayFor(modelItem => item.NomeContatoCliente)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    <a href="#" class="btn btn-danger deleteClient" rel="@item.Id">Excluir</a>
+                    <a href="#" class="btn btn-success editClient" rel="@item.Id">Editar</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<script>
+    $(function () {
+
+
+        $('.deleteClient').on('click', function (e) {
+            e.preventDefault();
+            var id = this.getAttribute('rel');
+            var r = confirm("Confirmar exclusão de Cliente?");
+            if (r === true) {
+                alert('VOCÊ PRECISA IMPLEMENTAR ISSO')
+            }
+        });
+        $('.editClient').on('click', function (e) {
+
+            e.preventDefault();
+            var id = this.getAttribute('rel');
+            window.location = '/Client/Edit/' + id;
+        });
+    });
+</script>
+
