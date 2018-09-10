@@ -9,10 +9,12 @@ using System.Web.Http;
 namespace BecaDotNet.UI.MVC.WebApi.Controllers
 {
 
+    [RoutePrefix("api/user")]
     public class UserController : ApiController
     {
 
         [HttpGet]
+        [Route("get")]
         public IHttpActionResult Get(int? id)
         {
             var svc = new UserAppSvcGeneric();
@@ -30,6 +32,7 @@ namespace BecaDotNet.UI.MVC.WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("list")]
         public IHttpActionResult Get(User filter)
         {
             var svc = new UserAppSvcGeneric();
@@ -40,6 +43,7 @@ namespace BecaDotNet.UI.MVC.WebApi.Controllers
         }
 
         [HttpPost]
+        [Route("create")]
         public IHttpActionResult Post(UserViewModel model)
         {
             if (string.IsNullOrEmpty(model.login) ||
@@ -65,6 +69,7 @@ namespace BecaDotNet.UI.MVC.WebApi.Controllers
         }
 
         [HttpDelete]
+        [Route("delete")]
         public IHttpActionResult Delete(int id)
         {
             if (id <= 0)
@@ -80,6 +85,7 @@ namespace BecaDotNet.UI.MVC.WebApi.Controllers
         }
 
         [HttpPatch]
+        [Route("update")]
         public IHttpActionResult Patch(UserViewModel model)
         {
             if (!model.id.HasValue || model.id.Value <= 0)

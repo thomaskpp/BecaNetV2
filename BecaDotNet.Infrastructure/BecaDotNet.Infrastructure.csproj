@@ -47,5 +47,11 @@
   <ItemGroup>
     <Folder Include="LocalDb\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BecaDotNet.Domain\BecaDotNet.Domain.csproj">
+      <Project>{9C65FA95-0A47-4FFB-A18F-D7DBD4A84267}</Project>
+      <Name>BecaDotNet.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

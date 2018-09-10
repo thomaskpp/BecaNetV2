@@ -13,9 +13,9 @@ namespace BecaDotNet.Domain.Repository
         T GetEntityFromReader(IDataReader reader);
         IEnumerable<T> GetManyEntityFromReader(IDataReader reader);
 
-        //C   reate
-        //R   ecover
-        //U   pdate
-        //D   elete
+        //C reate
+        //R ecover
+        //U pdate
+        //D elete
     }
 }

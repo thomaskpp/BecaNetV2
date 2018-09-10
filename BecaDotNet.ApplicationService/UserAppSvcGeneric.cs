@@ -7,7 +7,7 @@ using BecaDotNet.Repository;
 
 namespace BecaDotNet.ApplicationService
 {
-    public class UserAppSvcGeneric : IGenericService<User>
+    public class UserAppSvcGeneric : IGenericService<User>, IUserServiceNova
     {
         private UserRepositoryGeneric rep = new UserRepositoryGeneric();
 

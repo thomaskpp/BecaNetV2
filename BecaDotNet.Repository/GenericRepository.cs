@@ -24,8 +24,6 @@ namespace BecaDotNet.Repository
             this.Update(toDelete);
         }
 
-
-
         public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate, 
             params Expression<Func<T, object>>[] includes)
         {

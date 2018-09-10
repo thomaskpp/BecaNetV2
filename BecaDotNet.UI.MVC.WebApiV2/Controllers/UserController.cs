@@ -1,14 +1,15 @@
 ﻿using BecaDotNet.ApplicationService;
 using BecaDotNet.Domain.Model;
-using BecaDotNet.UI.MVC.WebApi.Models;
+using BecaDotNet.UI.MVC.WebApiV2.Models;
 using System;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
-namespace BecaDotNet.UI.MVC.WebApi.Controllers
+namespace BecaDotNet.UI.MVC.WebApiV2.Controllers
 {
-
+    [EnableCors(origins:"http://localhost:8080",headers:"*",methods:"GET,POST,PATCH,DELETE")]
     public class UserController : ApiController
     {
 
@@ -22,7 +23,7 @@ namespace BecaDotNet.UI.MVC.WebApi.Controllers
             if (id.HasValue && id.Value > 0)
             {
                 var resultSingle = svc.Get(id.Value);
-                if (resultSingle.Id == 0)
+                if (resultSingle == null)
                     return NotFound();
                 return Ok(resultSingle);
             }
@@ -30,10 +31,18 @@ namespace BecaDotNet.UI.MVC.WebApi.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get(User filter)
+        [Route("api/user/list")]
+        public IHttpActionResult List(string name, int? usertypeid)
         {
             var svc = new UserAppSvcGeneric();
-            var result = svc.FindBy(filter);
+            var filterObj = new User
+            {
+                Name = name,
+                UserTypeId = usertypeid ?? 0
+            };
+
+            var result = svc.FindBy(filterObj);
+
             if (result == null || result.Count() == 0)
                 return NotFound();
             return Ok(result);
@@ -99,6 +108,7 @@ namespace BecaDotNet.UI.MVC.WebApi.Controllers
                 return InternalServerError(ex);
             }
         }
+
 
     }
 }
